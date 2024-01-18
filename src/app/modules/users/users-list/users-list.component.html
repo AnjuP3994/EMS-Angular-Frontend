@@ -1,0 +1,57 @@
+<div class="d-flex">
+
+    <div class="sidebar bg-warning p-4 border border-secondary d-flex flex-column">
+        <a routerLink="/dashboard" class="fc text-decoration-none mt-5 fw-bolder fs-5 ms-5 mb-5">Home</a>
+        <a routerLink="/users" class="fc text-decoration-none fw-bolder fs-5 ms-5">Users</a>
+    </div>
+
+
+    <div class="col-8 users-list m-4 mx-5">
+      <h4 class="mb-4">{{adminLoginTime | date:'short'}}</h4>
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h2 class="h1 fs-1">Users List</h2>
+            <button routerLink="add" id="btn" class="btn text-light px-4">Add</button>
+        </div>
+
+        <div class="col-8 d-flex justify-content-evenly align-items-center my-3">
+          <input [(ngModel)]="searchUser" type="text" placeholder="Search by name" class="form-control">
+          <button class="btn btn-warning ms-4 w-25" mat-button [matMenuTriggerFor]="menu">Sort</button>
+          <mat-menu class="m-2" #menu="matMenu">
+            <button (click)="sortUsersById()" mat-menu-item>Sort by Id</button>
+            <button (click)="sortUsersByName()" mat-menu-item>Sort by Name</button>
+          </mat-menu>
+          <button (click)="generatePDF()" class="btn btn-success ms-4 w-50">Export as PDF</button>
+        </div>
+
+        <table class="table shadow mt-5">
+            <thead>
+              <tr>
+                <th scope="col">User Id</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let users of allUsers | search:searchUser | paginate: { itemsPerPage: 5, currentPage: p }" [hidden]="users.id==='1'">
+                <th scope="row">{{users.id}}</th>
+                <td>{{users.name}}</td>
+                <td>{{users.email}}</td>
+                <td [ngClass]="users.active=='1'? 'text-success':'text-warning'">{{users.active=="1"?"Active":"InActive"}}</td>
+                <td class="">
+                    <a  routerLink="edit/{{users.id}}"><i class="fa-solid fa-pen text-primary"></i></a>
+                    <button (click)="deleteAUser(users.id)" class="btn ms-5"><i class="fa-solid fa-trash text-danger"></i></button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        <div class="text-center my-4">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,37 @@
+<div class="container p-5">
+    <div class="row ms-5">
+        <div class="col-6">
+            <!-- image -->
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/734/274/small_2x/illustration-of-people-trying-to-solve-the-puzzle-of-security-problems-with-data-security-and-encryption-technology-design-can-be-for-landing-page-website-poster-banner-mobile-apps-web-social-media-free-vector.jpg"
+            width="100%" alt="">
+        </div>
+        <div class="col-6 ">
+            <!-- login form -->
+            <div class="">
+                <form (ngSubmit)="login()" #loginForm="ngForm" class="m-4 p-5 shadow">
+                    <h2 class="text-center fw-bolder">LOGIN</h2>
+                    <div class="mt-3">
+                      <label for="exampleInputEmail1" class="form-label fw-bolder">Email address</label>
+                      <input name="email" [(ngModel)]="email" type="email" class="form-control" email required #useremailinput="ngModel">
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <!-- Invalid email -->
+                    <div *ngIf="useremailinput.invalid && useremailinput.touched" class="text-danger fw-bolder">
+                        <p>*Invalid Email</p>
+                    </div>
+                    <div class="mt-3">
+                      <label for="exampleInputPassword1" class="form-label fw-bolder">Password</label>
+                      <input name="password" [(ngModel)]="password" type="password" class="form-control" required pattern="[a-zA-Z0-9]*" #userpasswordinput="ngModel">
+                    </div>
+                    <!-- Invalid password -->
+                    <div *ngIf="userpasswordinput.invalid && userpasswordinput.touched" class="text-danger fw-bolder">
+                        <p>*Invalid Password</p>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button [disabled]="loginForm.invalid" type="submit" class="btn text-light px-4">Login</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>

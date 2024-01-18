@@ -1,0 +1,9 @@
+*{
+    overflow-y: hidden;
+}
+.btn{
+    background-color: rgb(0, 90, 128);
+}
+.container{
+    margin: 71.5px;
+}

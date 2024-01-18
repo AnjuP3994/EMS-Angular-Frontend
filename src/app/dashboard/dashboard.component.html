@@ -1,0 +1,56 @@
+<div class="d-flex">
+    <div *ngIf="showSidebar" class="sidebar bg-warning p-4 border border-secondary d-flex flex-column">
+        <a routerLink="/dashboard" class="fc text-decoration-none mt-4 fs-5 fw-bolder ms-5 mb-5">Home</a>
+        <a routerLink="/users" class="fc text-decoration-none fs-5 fw-bolder ms-5">Users</a>
+    </div>
+    <div class="dashboard w-100">
+        <div class="row m-5">
+            <div class="col-8 shadow rounded">
+                <!-- admin banner -->
+                <div class="bgimg shadow rounded">
+                    <h1 class="mt-3 fw-bolder">
+                        <a (click)="btnClicked()"><i class="fa-solid fa-bars fs-4 mx-3"></i></a>
+                        <span>Welcome {{adminDetails.name}}</span>
+                    </h1>
+                </div>
+                <div class="row">
+                    <div class="col-5 mt-5">
+                        <!-- calender -->
+                        <mat-card class="bgclr shadow rounded">
+                            <mat-calendar [(selected)]="selected"></mat-calendar>
+                        </mat-card>
+                          <!-- <p>Selected date: {{selected}}</p> -->
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-6 mt-5">
+                        <!-- pie-chart -->
+                        <highcharts-chart 
+                        [Highcharts]="Highcharts"
+                        [options]="chartOptions"
+                        style="width: 100%; height: 400px; display: block;"
+                        ></highcharts-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 ps-5 pe-3">
+                <div style="height: 500px; width: 100%;" class="shadow bg-light text-center rounded">
+                    <!-- edit admin -->
+                    <h1 class="text-center mt-4 fw-bolder">Admin Details</h1>
+                    <img src="https://www.pngkit.com/png/detail/281-2812821_user-account-management-logo-user-icon-png.png" 
+                    alt="" width="250px" class="mb-3">
+                    <div class="mx-4">
+                        <input [(ngModel)]="adminDetails.name" name="name" type="text" class="form-control form-control-lg mb-3">
+                        <input [(ngModel)]="adminDetails.password" name="password" type="text" class="form-control form-control-lg mb-4">
+                    </div>
+                    <button (click)="updateAdm()" class="btn btn-success px-3">Update</button>
+                </div>
+                <div class="bgclr1 shadow mt-5 text-center rounded">
+                    <!-- total no. of employees -->
+                    <h1 class="mt-4 text-light">Total No of Employees: {{usersCount}}</h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

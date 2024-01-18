@@ -1,0 +1,47 @@
+<div class="d-flex">
+    <div class="sidebar bg-warning p-4 border border-secondary d-flex flex-column">
+        <a routerLink="/dashboard" class="fc text-decoration-none mt-5 fw-bolder fs-5 ms-5 mb-5">Home</a>
+        <a routerLink="/users" class="fc text-decoration-none fw-bolder fs-5 ms-5">Users</a>
+    </div>
+    <div class="col-5 users m-4 mt-5">
+        <h2 class="mb-4 ms-5 ps-2">Add New User Details</h2>
+        <form (ngSubmit)="addUser()" #addUserForm="ngForm" class="p-4 rounded mx-5 border shadow">
+
+            <input [(ngModel)]="user.id" name="id" type="text" placeholder="User Id" class="form-control" 
+            required pattern="[0-9]*" #userid="ngModel">
+            <!-- Invalid id -->
+            <div *ngIf="userid.invalid && userid.touched" class="text-danger fw-bolder">
+                <p>*Invalid Id</p>
+            </div>
+
+            <input [(ngModel)]="user.name" name="name" type="text" placeholder="User Name" class="form-control my-3" 
+            required pattern="[a-zA-Z ]*" #username="ngModel">
+            <!-- Invalid name -->
+            <div *ngIf="username.invalid && username.touched" class="text-danger fw-bolder">
+                <p>*Invalid Name</p>
+            </div>
+
+            <input [(ngModel)]="user.email" name="email" type="text" placeholder="User Email" class="form-control" 
+            required #useremail="ngModel">
+            <!-- Invalid email -->
+            <div *ngIf="useremail.invalid && useremail.touched" class="text-danger fw-bolder">
+                <p>*Invalid Email</p>
+            </div>
+
+            <select [(ngModel)]="user.active" name="active" id="" class="form-control mt-3" #active="ngModel" required>
+                <option value="" hidden>Select</option>
+                <option value="1">Active</option>
+                <option value="0">InActive</option>
+            </select>
+            <!-- Invalid select -->
+            <div *ngIf="active.invalid && active.touched" class="text-danger fw-bolder">
+                <p>*</p>
+            </div>
+
+            <div class="text-center mt-3">
+                <button [disabled]="addUserForm.invalid" class="btn btn-success px-4">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+

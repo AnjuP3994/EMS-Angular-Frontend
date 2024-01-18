@@ -1,0 +1,10 @@
+.sidebar{
+    height: 673px;
+    width: 250px;
+}
+h2{
+    overflow-y: hidden;
+}
+.fc{
+    overflow-y: hidden;
+}

@@ -1,0 +1,13 @@
+#btn{
+    background-color: rgb(0, 90, 128);
+}
+.sidebar{
+    height: 673px;
+    width: 250px;
+}
+.h1{
+    overflow-y: hidden;
+}
+.fc{
+    overflow-y: hidden;
+}

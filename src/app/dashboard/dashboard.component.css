@@ -1,0 +1,27 @@
+.sidebar{
+    height: 787px;
+    width: 250px;
+}
+.fc{
+    overflow-y: hidden;
+}
+.bgimg{
+    background-image: url('https://www.mipropertyportal.com/wp-content/uploads/2018/12/mipp-admin-banner.jpg');
+    /* background-color: rgb(246, 139, 73); */
+    height: 242px;
+    width: 790px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.bgclr{
+    background-color: rgb(255, 251, 243);
+}
+.bgclr1{
+    /* background-image: url('https://www.shutterstock.com/image-photo/human-resources-social-networking-assessment-600nw-393304033.jpg'); */
+    background-color: rgb(12, 67, 94);
+    /* background-size: contain;
+    background-repeat: no-repeat; */
+    height: 85px;
+}
+
+
